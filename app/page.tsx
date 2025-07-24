@@ -14,7 +14,7 @@ export default async function HomePage() {
   
   const res = await fetch(`https://fakestoreapi.com/products`, {next:{revalidate: 60}});
   if(!res.ok) throw new Error("Fetching feild");
-  const data: Products = await res.json();
+  const data: Products[] = await res.json();
 
 
   return (
