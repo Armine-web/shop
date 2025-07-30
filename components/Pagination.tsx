@@ -2,6 +2,7 @@
 import React from 'react'
 import {useState, useMemo } from 'react'
 import Link from "next/link";
+import StarRating from './StarRating';
 
 type Product = {
   id: number,
@@ -9,7 +10,11 @@ type Product = {
   price: number,
   description: string,
   category: string,
-  image: string
+  image: string,
+  rating: {
+    rate: number,
+    count: number
+  }
 }
 
 type Props = {
@@ -28,7 +33,7 @@ export default function Pagination({products}: Props) {
         const start = (page - 1) * itemsPerPage;
         const end = start + itemsPerPage;
         return products.slice(start, end);
-    }, [page]);
+    }, [page, products]);
 
 
         const prev = () => { setPage(p => Math.max(1, p-1))};
@@ -50,8 +55,10 @@ export default function Pagination({products}: Props) {
                         <img src={item.image} alt={item.title} className="w-full h-48 object-contain" />
                         <div className="p-4">
                             <h2 className="text-xl font-semibold text-gray-900">{item.title}</h2>
-                            <p className="text-gray-700 mt-2">Price: <span className="font-bold text-green-600">${item.price}</span></p>
-                            <p className="text-gray-500 mt-1">Category: {item.category}</p>
+                              <StarRating rate={item.rating.rate} />
+                              <p className="text-lg text-gray-600"> Count: {item.rating.count} </p>
+                              <p className="mt-2 text-xl text-gray-600">Price: <span className="text-green-500">{item.price}</span></p>
+                              <p className="mt-1 text-gray-500">Category: {item.category}</p>
                         </div>
                         </Link>
                     </li>
