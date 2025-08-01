@@ -50,7 +50,7 @@ export default function Pagination({products}: Props) {
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {
                 current.map(item => 
-                    <li key={item.id} className="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-2 hover:shadow-xl transition-shadow duration-300">
+                    <li key={item.id} className="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-2 hover:p-4 hover:shadow-xl transition-shadow duration-300">
                         <Link  href={`/product/${item.id}`}> 
                         <img src={item.image} alt={item.title} className="w-full h-48 object-contain" />
                         <div className="p-4">

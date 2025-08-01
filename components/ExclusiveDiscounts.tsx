@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 type Product = {
   id: number
@@ -39,18 +40,26 @@ export default function ExclusiveDiscounts() {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <h2 className="text-2xl font-bold mb-4 text-center text-red-800">Today’s Best Deals</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 ">
+        
         {products.map((product) => (
-          <div key={product.id} className="border rounded-lg p-4 shadow hover:shadow-md transition">
+        <Link href={`/product/${product.id}`} key={product.id}>
+            <div className="rounded-lg p-4 shadow hover:p-8 shadow-red-200 hover:shadow-md transition min-h-[300px]">
             <img
-              src={product.image}
-              alt={product.title}
-              className="h-40 mx-auto object-contain"
+                src={product.image}
+                alt={product.title}
+                className="h-40 mx-auto object-contain"
             />
-            <h3 className="text-sm mt-2 font-semibold text-gray-800">{product.title}</h3>
-            <p className="text-green-600 font-bold mt-1">${product.price.toFixed(2)}</p>
-          </div>
+            <h3 className="text-sm mt-2 font-semibold text-gray-800">
+                {product.title}
+            </h3>
+            <p className="text-green-600 font-bold mt-1">
+                ${product.price.toFixed(2)}
+            </p>
+            </div>
+        </Link>
         ))}
+        
       </div>
     </div>
   )
