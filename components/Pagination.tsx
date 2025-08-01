@@ -55,9 +55,9 @@ export default function Pagination({products}: Props) {
                         <img src={item.image} alt={item.title} className="w-full h-48 object-contain" />
                         <div className="p-4">
                             <h2 className="text-xl font-semibold text-gray-900">{item.title}</h2>
-                              <StarRating rate={item.rating.rate} />
+                              <StarRating rate={item.rating.rate} id={item.id}/>
                               <p className="text-lg text-gray-600"> Count: {item.rating.count} </p>
-                              <p className="mt-2 text-xl text-gray-600">Price: <span className="text-green-500">{item.price}</span></p>
+                              <p className="mt-2 text-xl text-gray-600">Price: <span className="text-green-500">${item.price}</span></p>
                               <p className="mt-1 text-gray-500">Category: {item.category}</p>
                         </div>
                         </Link>

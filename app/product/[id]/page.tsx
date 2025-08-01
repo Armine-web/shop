@@ -41,7 +41,7 @@ export default async function ProductsPage({ params }: Params) {
             <p className="text-lg text-gray-600 p-1">Count: {data.rating.count}</p>
           </div>
           <div className='w-full flex justify-center mt-2'>
-            <StarRating rate={data.rating.rate} />
+            <StarRating rate={data.rating.rate} id={data.id}/>
           </div>
         </div>
         <div className='w-full flex flex-col justify-start mt-4'>

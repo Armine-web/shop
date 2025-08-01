@@ -1,14 +1,17 @@
 import Pagination from "../components/Pagination"
 
-type Products = {
+type Product = {
   id: number,
   title: string,
   price: number,
   description: string,
   category: string,
-  image: string
+  image: string,
+  rating: {
+    rate: number,
+    count: number
+  }
 }
-
 
 
 
@@ -16,7 +19,7 @@ export default async function HomePage() {
   
   const res = await fetch(`https://fakestoreapi.com/products`, {next:{revalidate: 60}});
   if(!res.ok) throw new Error("Fetching feild");
-  const data: Products[] = await res.json();
+  const data: Product[] = await res.json();
 
 
   return (
