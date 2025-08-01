@@ -12,6 +12,7 @@ export default function Header() {
         <span className="hover:underline">News</span>
         <span className="hover:underline">About</span>
       </div>
+      
     </div>
   )
 }
